@@ -7,9 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'your-secret-key'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.134.64.208', 'localhost', 'https://admin-dash-board-front.vercel.appx']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,6 +40,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'thehimalayansquad.urls'
+ALLOWED_HOSTS = ['https://admin-dash-board-front.vercel.app/login', 'localhost']
 
 TEMPLATES = [
     {
@@ -73,7 +74,7 @@ DATABASES = {
         'USER': 'thehsdb',
         'PASSWORD': 'your_password',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
 
@@ -91,7 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-FRONTEND_URL = 'http://localhost:3000'
+FRONTEND_URL = 'https://admin-dash-board-front.vercel.app'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -103,6 +104,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -116,7 +119,9 @@ SIMPLE_JWT = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # React default port
+    'http://localhost:3000',
+    '34.134.64.208',
+    'https://admin-dash-board-front.vercel.app',  # React default port
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
