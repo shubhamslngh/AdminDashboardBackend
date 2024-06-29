@@ -2,14 +2,19 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'your-secret-key'
 
-DEBUG = False
+DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['34.134.64.208', 'localhost', 'https://admin-dash-board-front.vercel.appx']
+ALLOWED_HOSTS = [
+    '34.134.64.208', 
+    '127.0.0.1', 
+    
+    'localhost', 
+    'admin-dash-board-front.vercel.app'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,7 +45,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'thehimalayansquad.urls'
-ALLOWED_HOSTS = ['https://admin-dash-board-front.vercel.app/login', 'localhost']
 
 TEMPLATES = [
     {
@@ -57,10 +61,11 @@ TEMPLATES = [
         },
     },
 ]
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # e.g., smtp.gmail.com
-EMAIL_PORT = 587  # or 465 for SSL
-EMAIL_USE_TLS = True  # or EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'importshubh@gmail.com'
 EMAIL_HOST_PASSWORD = 'importshubh851'
 DEFAULT_FROM_EMAIL = 'importshubh@gmail.com'
@@ -92,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-FRONTEND_URL = 'https://admin-dash-board-front.vercel.app'
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -115,17 +120,19 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': False,
 }
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    '34.134.64.208',
-    'https://admin-dash-board-front.vercel.app',  # React default port
+    'http://127.0.0.1',
+    'http://34.134.64.208',
+    'https://admin-dash-board-front.vercel.app',
 ]
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-}   
+}
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
